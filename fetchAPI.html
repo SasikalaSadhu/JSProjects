@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body >
+    
+</body>
+<script>
+    fetch('https://sasikalasadhu.github.io/JavaScriptProjects/3.JavaScript/sasiStore.json')
+.then(res=>res.json())
+.then(json=>
+{   const productDetails =json;
+    for (var i=0; i<productDetails.length; i++){
+    var mainDiv = document.createElement('div');
+    document.body.appendChild(mainDiv); 
+                    mainDiv.style.width = "70%";
+                    mainDiv.style.border = "1px solid lightgray";                                   
+                    mainDiv.style.display = "flex";
+                    mainDiv.style.columnGap = "15px";
+                    mainDiv.style.margin = "1px";    
+    var firstDiv = document.createElement('div');
+    mainDiv.appendChild(firstDiv);
+                    firstDiv.style.alignItems = "center";
+                    firstDiv.style.backgroundColor = "lightgray";  
+    var secondDiv = document.createElement('div');
+    mainDiv.appendChild(secondDiv);
+    var ThirdDiv = document.createElement('div');
+    mainDiv.appendChild(ThirdDiv);
+    ThirdDiv.style.display = "flex";                                     
+    var imgtag = document.createElement('img');
+    firstDiv.appendChild(imgtag);
+                    imgtag.src = productDetails[i].image;
+                    imgtag.style.width = "200px";
+                    imgtag.style.height = "200px";
+                    
+    var headTag = document.createElement('h2');
+    secondDiv.appendChild(headTag);
+                    headTag.textContent = productDetails[i].title;
+                    headTag.style.color = "blue";                    
+    var priceTag = document.createElement('p');
+   
+    ThirdDiv.appendChild(priceTag);
+                    priceTag.textContent = 'INR.' + productDetails[i].price + '/-';
+                    priceTag.style.fontWeight = "bolder";
+                    priceTag.style.fontSize = "20px";
+                   
+    var MRPTag =  document.createElement('p');  
+    console.log(priceTag);
+    ThirdDiv.appendChild(MRPTag)
+                    MRPTag.textContent = 'INR' + productDetails[i]. MRP;
+                    MRPTag.style.textDecoration = "line-through" ;
+                    MRPTag.style.paddingBottom = "10px";
+    var descriptionTag = document.createElement('p');
+    secondDiv.appendChild(descriptionTag);
+                    descriptionTag.textContent =productDetails[i].description;
+    var categoryTag = document.createElement('p');
+    secondDiv.appendChild(categoryTag);
+                    categoryTag.textContent = 'Category:' + productDetails[i].category
+                    categoryTag.style.color = "rgb(39, 33, 33)";
+    var ratingtag = document.createElement('p');
+    secondDiv.appendChild(ratingtag);
+                    ratingtag.textContent ='Rating: ' + productDetails[i].rating.rate + '/5';
+                    ratingtag.style.color = "blue";
+    var buttonTag = document.createElement('button');
+    secondDiv.appendChild(buttonTag);
+                    buttonTag.textContent = 'Add to cart'
+                    buttonTag.style.borderRadius = "10px";
+                    buttonTag.style.backgroundColor = "Yellow";
+                    buttonTag.style.borderColor="lightgray";
+    
+}})
+</script>
+</html>
